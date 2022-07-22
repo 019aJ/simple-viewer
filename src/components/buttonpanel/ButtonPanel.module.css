@@ -1,0 +1,6 @@
+.buttonPanel {
+    background-color: #dce1e2;
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 100%;
+}

@@ -1,0 +1,13 @@
+/* Remove default bullets */
+ul,
+#modelTree {
+  list-style-type: none;
+  padding-inline-start: 40px;
+    margin: 0;
+}
+
+/* Remove margins and padding from the parent ul */
+#modelTree {
+  margin: 0;
+  padding: 0;
+}
