@@ -11,7 +11,7 @@ const stateToString = (state: ModelSliceState) => {
 export const onSelect = (state: ModelSliceState, action: ActionType) => {
   state.value = action.payload.modelId
 }
-export const onClear = (state: ModelSliceState, action: ActionType) => {
+export const onClear = (state: ModelSliceState) => {
   state.value = undefined
 }
 

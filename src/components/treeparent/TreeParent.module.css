@@ -23,6 +23,7 @@
 }
 .nested {
   display: none;
+  transform: rotate(90deg);
 }
 .treeNode {
   list-style-type: none;

@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { ModelAttribute } from "../dto/ModelAttribute"
 
-export type ModelAttributesFakeSliceState = {
+export type ModelAttributesSliceState = {
   value?: ModelAttribute[]
   modelId?: number
   isLoading: boolean
@@ -9,18 +9,18 @@ export type ModelAttributesFakeSliceState = {
 }
 export type ActionType = PayloadAction<{
   attributes?: ModelAttribute[]
-  modelId: number
+  modelId?: number
 }>
 
 export const onLoadStart = (
-  state: ModelAttributesFakeSliceState,
+  state: ModelAttributesSliceState,
   action: ActionType
 ) => {
   state.isLoading = true
   state.modelId = action.payload.modelId
 }
 export const onLoadSuccess = (
-  state: ModelAttributesFakeSliceState,
+  state: ModelAttributesSliceState,
   action: ActionType
 ) => {
   state.value = action.payload.attributes
@@ -28,27 +28,27 @@ export const onLoadSuccess = (
   state.isSuccess = true
 }
 
-export const onLoadFailure = (state: ModelAttributesFakeSliceState) => {
+export const onLoadFailure = (state: ModelAttributesSliceState) => {
   state.isLoading = false
   state.isSuccess = false
 }
-export const attributeFakeLoadSlice = createSlice({
+export const attributeLoadSlice = createSlice({
   name: "modelAttributeFakeLoad",
   initialState: {
     value: [],
     isLoading: true,
     isSuccess: true,
-  } as ModelAttributesFakeSliceState,
+  } as ModelAttributesSliceState,
   reducers: {
-    fetchAttributeFakeData: onLoadStart,
-    fetchAttributeFakeDataFinished: onLoadSuccess,
-    fetchAttributeFakeDataFailed: onLoadFailure,
+    fetchAttributeData: onLoadStart,
+    fetchAttributeDataFinished: onLoadSuccess,
+    fetchAttributeDataFailed: onLoadFailure,
   },
 })
 export const {
-  fetchAttributeFakeData,
-  fetchAttributeFakeDataFinished,
-  fetchAttributeFakeDataFailed,
-} = attributeFakeLoadSlice.actions
+  fetchAttributeData: fetchAttributeData,
+  fetchAttributeDataFinished: fetchAttributeDataFinished,
+  fetchAttributeDataFailed: fetchAttributeDataFailed,
+} = attributeLoadSlice.actions
 
-export default attributeFakeLoadSlice.reducer
+export default attributeLoadSlice.reducer

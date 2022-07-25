@@ -1,23 +1,21 @@
-import React, { MouseEvent } from "react"
-import { Model } from "../../dto/Model"
+import React from "react"
 import { Checkbox } from "../checkbox/Checkbox"
-import styles from "./TreeLeaf.module.css"
 
 type TreeLeafProps = {
-  model: Model
+  id: string
+  name: string
   onCheckboxClick: (state: number) => void
   isChecked: number
   onRowClick: () => void
 }
 
 export const TreeLeaf: React.FC<TreeLeafProps> = ({
-  model,
+  id,
+  name,
   onCheckboxClick,
   isChecked,
   onRowClick,
 }) => {
-  const id = model.id.toString()
-  const name = model.name
   return (
     <li id={id} key={id}>
       <Checkbox onClick={onCheckboxClick} initialState={isChecked} />

@@ -1,6 +1,6 @@
 export type ModelAttribute = {
-    id: number
-    name: string
-    identifier: string
-    value: string
+  id: number
+  name: string
+  identifier: string
+  value: string
 }

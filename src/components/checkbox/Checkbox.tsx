@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 
 type CheckboxProps = {
   onClick: (state: number) => void
@@ -25,6 +25,7 @@ export const Checkbox = ({ onClick, initialState }: CheckboxProps) => {
   return (
     <input
       type="checkbox"
+      data-testid="checkbox"
       ref={checkboxRef}
       onClick={() =>
         onClick(checkboxRef.current && checkboxRef.current.checked ? 1 : 0)

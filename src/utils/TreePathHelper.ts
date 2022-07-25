@@ -1,7 +1,8 @@
 import { Model } from "../dto/Model"
 
 export const isLeaf = (models: Model[], index: number, currentPath: string) =>
-  index + 1 < models.length && !models[index + 1].path.startsWith(currentPath)
+  index + 1 === models.length ||
+  (index + 1 < models.length && !models[index + 1].path.startsWith(currentPath))
 
 export const getCurrentPath = (currentModel: Model) =>
   currentModel.path

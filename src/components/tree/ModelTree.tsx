@@ -38,7 +38,8 @@ const getLeafComp = (
 ) => {
   return (
     <TreeLeaf
-      model={model}
+      id={model.id.toString()}
+      name={model.name}
       onCheckboxClick={(state) => {
         getCheckClickHandler(state, index, dispatch)
       }}
@@ -62,7 +63,8 @@ const getParentComp = (
   return (
     <TreeParent
       key={"tp" + model.id}
-      model={model}
+      id={model.id.toString()}
+      name={model.name}
       isChecked={isChecked}
       isOpen={isOpen}
       onCheckboxClick={(state) => {

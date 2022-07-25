@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 import { Model } from "../dto/Model"
-import { propagate } from "../utils/CheckboxPropagation";
+import { propagate } from "../utils/CheckboxPropagation"
 export type CheckboxSliceState = { value: number[]; tree: Model[] }
 export type ActionType = PayloadAction<{
   checks?: number[]
@@ -14,14 +14,14 @@ export const onInit = (state: CheckboxSliceState, action: ActionType) => {
   state.tree = action.payload.tree ? action.payload.tree : []
 }
 export const onUpdateCell = (state: CheckboxSliceState, action: ActionType) => {
-   state.value =  propagate(
-      state.tree,
-      state.value,
-      action.payload.cellIndex,
-      action.payload.cellState
-    )
+  state.value = propagate(
+    state.tree,
+    state.value,
+    action.payload.cellIndex,
+    action.payload.cellState
+  )
 }
-export const onClear = (state: CheckboxSliceState, action: ActionType) => {
+export const onClear = (state: CheckboxSliceState) => {
   state.value = []
   state.tree = []
 }

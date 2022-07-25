@@ -32,11 +32,13 @@ const propagateDown = (
   tree: Model[],
   checksCopy: number[],
   index: number,
-  state: number,
+  state: number
 ) => {
   const childrenIndexes = getAllChildrenIndexes(index, tree)
   //set same value to all children
-  childrenIndexes.forEach(i => {checksCopy[i] = state})
+  childrenIndexes.forEach((i) => {
+    checksCopy[i] = state
+  })
 }
 
 const propagateUp = (

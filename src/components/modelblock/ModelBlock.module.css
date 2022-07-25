@@ -1,20 +1,16 @@
 .block {
   width: 400px;
   height: 100%;
-  border: 1px solid rgb(192, 192, 192);
+  border-radius: 5px;
 }
 
-.titlePanel {
-  background-color: #dce1e2;
-  height: 20px;
-}
 .treePanelShort {
-  height: 600px;
-  overflow-y:scroll;
+  height: 575px;
+  overflow-y: scroll;
 }
 .treePanelLong {
   height: 100%;
-  overflow-y:scroll;
+  overflow-y: scroll;
 }
 .attributePanel {
   height: 280px;

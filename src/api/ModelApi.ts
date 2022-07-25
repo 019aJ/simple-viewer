@@ -7,5 +7,5 @@ export const getModelTree = async () => {
 
 export const getModelAttributes = async (id: number) => {
   await sleep(100)
-  return { ok: true, json: () => modelAttributes[id] }
+  return { ok: true, json: () => modelAttributes[id - 1] }
 }

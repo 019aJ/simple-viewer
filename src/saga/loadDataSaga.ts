@@ -3,15 +3,13 @@ import { getModelAttributes, getModelTree } from "../api/ModelApi"
 import { Model } from "../dto/Model"
 import { ModelAttribute } from "../dto/ModelAttribute"
 import { fetchData, fetchFailure, fetchFinished } from "../redux/loadModelSlice"
+
 import {
   fetchAttributeData,
-  fetchAttributeFailure,
-  fetchAttributeFinished,
+  fetchAttributeDataFailed,
+  fetchAttributeDataFinished,
 } from "../redux/loadAttributesSlice"
-
 import { buildTree } from "../utils/TreeTransform"
-import { PayloadAction } from "@reduxjs/toolkit"
-import { fetchAttributeFakeData, fetchAttributeFakeDataFailed, fetchAttributeFakeDataFinished } from "../redux/loadAttributesFakeSlice"
 
 async function fetchAsync<T>(
   func: () => Promise<{ ok: boolean; json: () => T }>
@@ -49,24 +47,26 @@ function* fetchModels() {
 
 function* fetchModelAttributes({ payload }) {
   try {
-    const attributes: ModelAttribute[] = yield fetchAsyncParam<
-      number,
-      ModelAttribute[]
-    >(getModelAttributes, payload.modelId)
+    const attributes: ModelAttribute[] = payload.modelId
+      ? yield fetchAsyncParam<number, ModelAttribute[]>(
+          getModelAttributes,
+          payload.modelId
+        )
+      : undefined
 
     yield put({
-      type: fetchAttributeFakeDataFinished.type,
+      type: fetchAttributeDataFinished.type,
       payload: { attributes: attributes },
     })
   } catch (e) {
-    yield put({ type: fetchAttributeFakeDataFailed, error: e.message })
+    yield put({ type: fetchAttributeDataFailed, error: e.message })
   }
 }
 
 export function* modelsLoadSaga() {
   yield all([
     takeEvery(fetchData, fetchModels),
-    takeEvery(fetchAttributeFakeData, fetchModelAttributes),
+    takeEvery(fetchAttributeData, fetchModelAttributes),
   ])
 }
 

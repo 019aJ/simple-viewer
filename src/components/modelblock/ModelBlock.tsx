@@ -4,7 +4,7 @@ import { hide, show } from "../../redux/attributeSlice"
 import { ModelLoadSliceState } from "../../redux/loadModelSlice"
 import { AppStateType, modelDataState } from "../../redux/store"
 import { collapse, expand } from "../../redux/treeSlice"
-import { ButtonPanel } from "../buttonpanel/ButtonPanel"
+import { Block } from "../block/Block"
 import { AttributeList } from "../list/AttributeList"
 import { ModelTree } from "../tree/ModelTree"
 import styles from "./ModelBlock.module.css"
@@ -31,48 +31,58 @@ export const ModelBlock = ({}: ModelBlockProps) => {
     dispatch(collapse())
   }
   const btnStyle = `${styles.playPropButton}`
-
+  const buttons = [
+    <div
+      key={"show"}
+      data-testid="show"
+      className={
+        isAttributesVisible
+          ? `${btnStyle} ${styles.hide}`
+          : `${btnStyle} ${styles.show}`
+      }
+      onClick={onClickShowButton}
+    ></div>,
+    <div
+      key={"expandTree"}
+      data-testid="expandTree"
+      className={`${btnStyle} ${styles.expand}`}
+      onClick={onClickExpandButton}
+    ></div>,
+    <div
+      key={"collapseTree"}
+      data-testid="collapseTree"
+      className={`${btnStyle} ${styles.collapse}`}
+      onClick={onClickCollapseButton}
+    ></div>,
+  ]
   return (
     <div className={`${styles.block}`}>
-      <ButtonPanel>
-        <div
-          data-testid="show"
-          className={
-            isAttributesVisible
-              ? `${btnStyle} ${styles.hide}`
-              : `${btnStyle} ${styles.show}`
-          }
-          onClick={onClickShowButton}
-        ></div>
-        <div
-          data-testid="expandTree"
-          className={`${btnStyle} ${styles.expand}`}
-          onClick={onClickExpandButton}
-        ></div>
-        <div
-          data-testid="collapseTree"
-          className={`${btnStyle} ${styles.collapse}`}
-          onClick={onClickCollapseButton}
-        ></div>
-      </ButtonPanel>
-      <div
-        className={
-          isAttributesVisible ? styles.treePanelShort : styles.treePanelLong
-        }
+      <Block
+        key={"modelTreeBlock"}
+        title="Список моделей"
+        buttons={buttons}
+        style={{ width: "400px" }}
       >
-        {formState && !formState.isLoading && formState.isSuccess ? (
-          <ModelTree key="modelTree" models={formState.value} />
-        ) : (
-          <div>Загрузка данных...</div>
-        )}
-      </div>
+        <div
+          key={"modelTreeCont"}
+          className={
+            isAttributesVisible ? styles.treePanelShort : styles.treePanelLong
+          }
+        >
+          {formState && !formState.isLoading && formState.isSuccess ? (
+            <ModelTree key="modelTree" models={formState.value} />
+          ) : (
+            <div>Загрузка данных...</div>
+          )}
+        </div>
+      </Block>
+
       {isAttributesVisible ? (
-        <div className={styles.attributePanel}>
-          <div className={styles.titlePanel}>Параметры модели</div>
-          <div>
+        <Block key={"modelAttrBlock"} title="Параметры модели">
+          <div className={styles.attributePanel}>
             <AttributeList />
           </div>
-        </div>
+        </Block>
       ) : (
         <></>
       )}

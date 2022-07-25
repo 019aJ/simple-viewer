@@ -22,10 +22,7 @@ export const onLoadSuccess = (
   state.isSuccess = true
 }
 
-export const onLoadFailure = (
-  state: ModelLoadSliceState,
-  action: ActionType
-) => {
+export const onLoadFailure = (state: ModelLoadSliceState) => {
   state.isLoading = false
   state.isSuccess = false
 }

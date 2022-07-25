@@ -8,8 +8,9 @@ import TreeReducer, { TreeSliceState } from "./treeSlice"
 import AttributeReducer, { AttributeSliceState } from "./attributeSlice"
 
 import AttributeFakeLoadSliceReducer, {
-  ModelAttributesFakeSliceState,
-} from "./loadAttributesFakeSlice"
+  ModelAttributesSliceState,
+} from "./loadAttributesSlice"
+import ViewerStateSliceReducer, { ViewerSliceState } from "./viewerSlice"
 
 export type AppStateType = {
   modelSelection: ModelSliceState
@@ -17,7 +18,8 @@ export type AppStateType = {
   checks: CheckboxSliceState
   treeNodes: TreeSliceState
   attributeVisibility: AttributeSliceState
-  attributeFakeData: ModelAttributesFakeSliceState
+  attributeFakeData: ModelAttributesSliceState
+  viewerState: ViewerSliceState
 }
 
 const sagaMiddleware = createSagaMiddleware()
@@ -30,6 +32,7 @@ export default configureStore({
     treeNodes: TreeReducer,
     attributeVisibility: AttributeReducer,
     attributeFakeData: AttributeFakeLoadSliceReducer,
+    viewerStateDate: ViewerStateSliceReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(sagaMiddleware),
@@ -44,3 +47,4 @@ export const treeNodesState = (state: AppStateType) => state.treeNodes
 export const attributeState = (state: AppStateType) => state.attributeVisibility
 export const attributeFakeDataState = (state: AppStateType) =>
   state.attributeFakeData
+export const viewerDateState = (state: AppStateType) => state.viewerState

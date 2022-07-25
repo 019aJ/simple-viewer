@@ -1,10 +1,10 @@
-import React, { useState } from "react"
-import { Model } from "../../dto/Model"
+import React, { useEffect, useState } from "react"
 import { Checkbox } from "../checkbox/Checkbox"
 import styles from "./TreeParent.module.css"
 
 type TreeParentProps = {
-  model: Model
+  id: string
+  name: string
   children: React.ReactNode | React.ReactNode[]
   onCheckboxClick: (state: number) => void
   isChecked: number
@@ -12,18 +12,20 @@ type TreeParentProps = {
 }
 
 export const TreeParent: React.FC<TreeParentProps> = ({
-  model,
+  id,
+  name,
   onCheckboxClick,
   children,
   isChecked,
-  isOpen = true,
+  isOpen,
 }) => {
-  const [nodeOpen, setNodeOpen] = useState(true)
-  if (nodeOpen !== isOpen) {
-    setNodeOpen(isOpen)
-  }
-  const id = model.id.toString()
-  const name = model.name
+  const [nodeOpen, setNodeOpen] = useState(isOpen)
+
+  useEffect(() => {
+    if (nodeOpen !== isOpen) {
+      setNodeOpen(isOpen)
+    }
+  }, [isOpen])
   const currentPathArray = []
   currentPathArray.push(
     <div key={"dv" + id}>
