@@ -1,30 +1,15 @@
 import { Model } from "../dto/Model"
 
 export const isLeaf = (models: Model[], index: number, currentPath: string) =>
-  index + 1 === models.length ||
-  (index + 1 < models.length && !models[index + 1].path.startsWith(currentPath))
+  index >= 0 &&
+  (index + 1 === models.length ||
+    (index + 1 < models.length &&
+      !models[index + 1].path.startsWith(currentPath)))
 
 export const getCurrentPath = (currentModel: Model) =>
   currentModel.path
     ? currentModel.path + "/" + currentModel.name
     : currentModel.name
-
-export const getAllParents = (
-  currentModel: Model,
-  index: number,
-  tree: Model[]
-) => {
-  const parents: Model[] = []
-  let currentPath = currentModel.path
-  for (let i = index - 1; i > 0; index--) {
-    const node = tree[i]
-    if (getCurrentPath(node) === currentPath) {
-      parents.push(node)
-      currentPath = node.path
-    }
-  }
-  return parents
-}
 
 export const getAllParentIndexes = (
   currentModel: Model,

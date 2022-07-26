@@ -1,4 +1,22 @@
-.viewerBlock  {
+.viewerBlock {
   width: 100%;
   height: 100%;
+}
+.titleButton {
+  border-radius: 3px;
+  width: 30px;
+  height: 20px;
+  border: 1px solid rgb(192, 192, 192);
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.titleButton:active {
+  background-color: #4d90fe;
+  background-image: linear-gradient(#4d90fe 0px, #357ae8 100%);
+}
+
+.showTitle {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABmJLR0QA/wD/AP+gvaeTAAAA10lEQVQ4jc3UMW4CMRCF4S+EggMg0dMRpYI0nIENJRfIJXKE5BBcgBZyhVTUlNsjcYVoU7BGK7Qb2ygFT7JG9jz/Go+l4d71cLVfYpLJOGDblnhFdeMqAqTfAE7ruEKZWN0YG8ywg14jGZ5/qFdMTd+ldf12rzH2EeBz22EX8ITPCPCEYSrwiPcIUA4wNLup0vnD/lQvZshVV4UlXv4TOMRb5O46BzjCRwS4ywGmPLl0/rxOYFXHJwwisOALwKrNULh9OCwC5Hp8FZjjMaFC+ME3vhL9d6Bf2Es3wdRvhWsAAAAASUVORK5CYII=);
 }

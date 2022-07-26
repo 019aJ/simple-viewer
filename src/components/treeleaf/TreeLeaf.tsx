@@ -1,5 +1,6 @@
 import React from "react"
 import { Checkbox } from "../checkbox/Checkbox"
+import styles from "./TreeLeaf.module.css"
 
 type TreeLeafProps = {
   id: string
@@ -19,7 +20,9 @@ export const TreeLeaf: React.FC<TreeLeafProps> = ({
   return (
     <li id={id} key={id}>
       <Checkbox onClick={onCheckboxClick} initialState={isChecked} />
-      <label onClick={onRowClick}>{name}</label>
+      <label onClick={onRowClick} className={styles.leaf}>
+        {name}
+      </label>
     </li>
   )
 }

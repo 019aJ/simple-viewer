@@ -1,6 +1,6 @@
 import { Model } from "../dto/Model"
 import { ModelAttribute } from "../dto/ModelAttribute"
-import { getRandomCube, randomColor } from "./FigureGenerator"
+import { get3dTriangle, getRandomCube, randomColor } from "./FigureGenerator"
 
 export const modelList: Model[] = [
   {
@@ -92,6 +92,55 @@ export const modelList: Model[] = [
     name: "порода(12.12.2019)",
     path: "Солодовничье/Обследование",
     triangulation: getRandomCube(),
+    color: randomColor(),
+  },
+  {
+    id: 14,
+    name: "Порода2",
+    path: "Кукушкино/КТ/проба",
+    triangulation: get3dTriangle(),
+    color: randomColor(),
+  },
+  {
+    id: 15,
+    name: "Порода3",
+    path: "Кукушкино/КТ/проба",
+    triangulation: get3dTriangle(),
+    color: randomColor(),
+  },
+  {
+    id: 16,
+    name: "Порода4",
+    path: "Кукушкино/КТ/проба",
+    triangulation: get3dTriangle(),
+    color: randomColor(),
+  },
+  {
+    id: 17,
+    name: "Порода5",
+    path: "Кукушкино/КТ/проба",
+    triangulation: get3dTriangle(),
+    color: randomColor(),
+  },
+  {
+    id: 18,
+    name: "Порода6",
+    path: "Кукушкино/КТ/проба",
+    triangulation: get3dTriangle(),
+    color: randomColor(),
+  },
+  {
+    id: 19,
+    name: "Порода7",
+    path: "Кукушкино/КТ/проба",
+    triangulation: get3dTriangle(),
+    color: randomColor(),
+  },
+  {
+    id: 20,
+    name: "Порода8",
+    path: "Кукушкино/КТ/проба",
+    triangulation: get3dTriangle(),
     color: randomColor(),
   },
 ]
@@ -414,6 +463,146 @@ export const modelAttributes: ModelAttribute[][] = [
       id: 4,
       name: "Источник данных",
       value: "Автоматическая синхронизация",
+      identifier: "type",
+    },
+  ],
+  [
+    {
+      id: 1,
+      name: "Имя",
+      value: "Кукушкино/КТ/проба/Порода2",
+      identifier: "name",
+    },
+    {
+      id: 2,
+      name: "Тип модели",
+      value: "str",
+      identifier: "type",
+    },
+    {
+      id: 3,
+      name: "Источник данных",
+      value: "Исторические данные",
+      identifier: "type",
+    },
+  ],
+  [
+    {
+      id: 1,
+      name: "Имя",
+      value: "Кукушкино/КТ/проба/Порода3",
+      identifier: "name",
+    },
+    {
+      id: 2,
+      name: "Тип модели",
+      value: "str",
+      identifier: "type",
+    },
+    {
+      id: 3,
+      name: "Источник данных",
+      value: "Исторические данные",
+      identifier: "type",
+    },
+  ],
+  [
+    {
+      id: 1,
+      name: "Имя",
+      value: "Кукушкино/КТ/проба/Порода4",
+      identifier: "name",
+    },
+    {
+      id: 2,
+      name: "Тип модели",
+      value: "str",
+      identifier: "type",
+    },
+    {
+      id: 3,
+      name: "Источник данных",
+      value: "Исторические данные",
+      identifier: "type",
+    },
+  ],
+  [
+    {
+      id: 1,
+      name: "Имя",
+      value: "Кукушкино/КТ/проба/Порода5",
+      identifier: "name",
+    },
+    {
+      id: 2,
+      name: "Тип модели",
+      value: "str",
+      identifier: "type",
+    },
+    {
+      id: 3,
+      name: "Источник данных",
+      value: "Исторические данные",
+      identifier: "type",
+    },
+  ],
+  [
+    {
+      id: 1,
+      name: "Имя",
+      value: "Кукушкино/КТ/проба/Порода6",
+      identifier: "name",
+    },
+    {
+      id: 2,
+      name: "Тип модели",
+      value: "str",
+      identifier: "type",
+    },
+    {
+      id: 3,
+      name: "Источник данных",
+      value: "Исторические данные",
+      identifier: "type",
+    },
+  ],
+  [
+    {
+      id: 1,
+      name: "Имя",
+      value: "Кукушкино/КТ/проба/Порода7",
+      identifier: "name",
+    },
+    {
+      id: 2,
+      name: "Тип модели",
+      value: "str",
+      identifier: "type",
+    },
+    {
+      id: 3,
+      name: "Источник данных",
+      value: "Исторические данные",
+      identifier: "type",
+    },
+  ],
+  [
+    {
+      id: 1,
+      name: "Имя",
+      value: "Кукушкино/КТ/проба/Порода8",
+      identifier: "name",
+    },
+    {
+      id: 2,
+      name: "Тип модели",
+      value: "str",
+      identifier: "type",
+    },
+    {
+      id: 3,
+      name: "Источник данных",
+      value: "Исторические данные",
       identifier: "type",
     },
   ],

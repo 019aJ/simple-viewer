@@ -13,7 +13,7 @@ export const TitledBlockWithButtons = () => (
   <Block
     style={{ width: "600px" }}
     title="Какой-то заголовок, достаточно длинный"
-    buttons={[
+    widgets={[
       <button>Кнопка</button>,
       <button>Кнопка2</button>,
       <button>Кнопка3</button>,
@@ -32,7 +32,7 @@ export const UntitledBlockNoButtons = () => (
 export const UntitledBlockWithButtons = () => (
   <Block
     style={{ width: "600px" }}
-    buttons={[
+    widgets={[
       <button>Кнопка</button>,
       <button>Кнопка2</button>,
       <button>Кнопка3</button>,

@@ -41,18 +41,25 @@ export const ModelBlock = ({}: ModelBlockProps) => {
           : `${btnStyle} ${styles.show}`
       }
       onClick={onClickShowButton}
+      title={
+        isAttributesVisible
+          ? "Скрыть блок атрибутов"
+          : "Показать блок атрибутов"
+      }
     ></div>,
     <div
       key={"expandTree"}
       data-testid="expandTree"
       className={`${btnStyle} ${styles.expand}`}
       onClick={onClickExpandButton}
+      title="Развернуть"
     ></div>,
     <div
       key={"collapseTree"}
       data-testid="collapseTree"
       className={`${btnStyle} ${styles.collapse}`}
       onClick={onClickCollapseButton}
+      title="Свернуть"
     ></div>,
   ]
   return (
@@ -60,7 +67,7 @@ export const ModelBlock = ({}: ModelBlockProps) => {
       <Block
         key={"modelTreeBlock"}
         title="Список моделей"
-        buttons={buttons}
+        widgets={buttons}
         style={{ width: "400px" }}
       >
         <div

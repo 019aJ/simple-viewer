@@ -13,9 +13,13 @@ export const propagate = (
   index: number | undefined,
   state: number | undefined
 ) => {
-  if ((index || index === 0) && (state === 0 || state === 1)) {
+  if (
+    (index || index === 0) &&
+    index >= 0 &&
+    index < tree.length &&
+    (state === 0 || state === 1)
+  ) {
     const checksCopy = [...checks]
-    console.log(checksCopy[index], "->", state, " for index", index)
     const model = tree[index]
     checksCopy[index] = state
     //propagate up - to parents

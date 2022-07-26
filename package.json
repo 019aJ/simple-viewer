@@ -13,7 +13,9 @@
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --fix --ext .ts",
     "prepare": "cd .. && husky install .husky",
-    "precommit": "npm run lint-fix && npm run pretty"
+    "precommit": "npm run lint-fix && npm run pretty",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -25,12 +27,13 @@
   "bugs": {
     "url": "https://github.com/019aJ/simple-viewer/issues"
   },
-  "homepage": "https://github.com/019aJ/simple-viewer#readme",
+  "homepage": "https://github.com/019aJ/simple-viewer",
   "dependencies": {
     "@babel/runtime": "^7.18.9",
     "@react-three/drei": "^9.17.2",
     "@react-three/fiber": "^8.2.0",
     "@reduxjs/toolkit": "^1.8.3",
+    "invert-color": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.2",
@@ -50,6 +53,8 @@
     "@storybook/manager-webpack5": "^6.5.9",
     "@storybook/react": "^6.5.9",
     "@storybook/testing-library": "^0.0.13",
+    "@stryker-mutator/core": "^6.1.2",
+    "@stryker-mutator/jest-runner": "^6.1.2",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.2.6",
@@ -66,6 +71,7 @@
     "eslint": "^8.20.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "gh-pages": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.1",
     "jest": "^28.1.3",

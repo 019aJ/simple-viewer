@@ -1,10 +1,7 @@
 import { Configuration as WebpackConfiguration, DefinePlugin } from "webpack"
 import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server"
 import HtmlWebpackPlugin from "html-webpack-plugin"
-import dotenvlib from "dotenv"
-const dotenv = dotenvlib.config({
-  path: "./conf/.env",
-})
+
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration
 }
@@ -51,10 +48,7 @@ const config: Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "public/index.html",
-    }),
-    new DefinePlugin({
-      "process.env": JSON.stringify(dotenv.parsed),
-    }),
+    })
   ],
   devtool: "inline-source-map",
   devServer: {

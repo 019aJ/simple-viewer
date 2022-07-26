@@ -1,14 +1,9 @@
-import { Configuration, DefinePlugin } from "webpack"
 import HtmlWebpackPlugin from "html-webpack-plugin"
-/* eslint @typescript-eslint/no-var-requires: "off" */
-import dotenvlib from "dotenv"
-const dotenv = dotenvlib.config({
-  path: "./conf/.env",
-})
+import { Configuration } from "webpack"
 const config: Configuration = {
   mode: "production",
   output: {
-    publicPath: "/nosova-otus-2022-03-react",
+    publicPath: "/simple-viewer",
   },
   entry: "./src/index.tsx",
   module: {
@@ -47,9 +42,6 @@ const config: Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "public/index.html",
-    }),
-    new DefinePlugin({
-      "process.env": JSON.stringify(dotenv.parsed),
     }),
   ],
 }

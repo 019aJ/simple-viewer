@@ -10,6 +10,7 @@ import {
   fetchAttributeDataFinished,
 } from "../redux/loadAttributesSlice"
 import { buildTree } from "../utils/TreeTransform"
+import { setCenters } from "../utils/FillCenterHelper"
 
 async function fetchAsync<T>(
   func: () => Promise<{ ok: boolean; json: () => T }>
@@ -35,7 +36,7 @@ async function fetchAsyncParam<T, R>(
 function* fetchModels() {
   try {
     const models: Model[] = yield fetchAsync<Model[]>(getModelTree)
-
+    setCenters(models)
     yield put({
       type: fetchFinished.type,
       payload: { models: buildTree(models) },

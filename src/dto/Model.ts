@@ -4,4 +4,5 @@ export type Model = {
   path: string
   triangulation?: number[]
   color?: string
+  center?: number[]
 }
