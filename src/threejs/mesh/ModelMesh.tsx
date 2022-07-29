@@ -55,7 +55,7 @@ export const ModelMesh = ({ color, vertices, style }: ModelMeshProps) => {
         color={color}
         side={style === ViewStyle.SINGLE ? THREE.FrontSide : THREE.DoubleSide}
         wireframe={style === ViewStyle.WIREFRAME}
-        opacity={0.7}
+        opacity={style === ViewStyle.OPACITY ? 0.7 : 1}
         transparent={style === ViewStyle.OPACITY}
       />
     </mesh>
