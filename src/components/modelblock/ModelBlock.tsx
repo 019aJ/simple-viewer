@@ -30,7 +30,7 @@ export const ModelBlock = ({}: ModelBlockProps) => {
   const onClickCollapseButton = () => {
     dispatch(collapse())
   }
-  const btnStyle = `${styles.playPropButton}`
+  const btnStyle = `${styles.blockButton}`
   const buttons = [
     <div
       key={"show"}
@@ -63,7 +63,7 @@ export const ModelBlock = ({}: ModelBlockProps) => {
     ></div>,
   ]
   return (
-    <div className={`${styles.block}`}>
+    <div className={styles.block} data-testid="modelBlock">
       <Block
         key={"modelTreeBlock"}
         title="Список моделей"

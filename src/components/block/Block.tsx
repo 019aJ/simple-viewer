@@ -11,11 +11,26 @@ type BlockProps = {
 }
 
 export const Block: FC<BlockProps> = ({ title, widgets, children, style }) => (
-  <div key={"mn" + title} className={`${styles.block} `} style={style}>
-    <div key={"bt" + title} className={`${styles.blockTitle}`}>
+  <div
+    // Stryker disable next-line StringLiteral
+    key={"mn" + title}
+    data-testid={title}
+    className={styles.block}
+    style={style}
+  >
+    <div
+      // Stryker disable next-line StringLiteral
+      key={"bt" + title}
+      className={styles.blockTitle}
+    >
       <ButtonPanel title={title}>{widgets}</ButtonPanel>
     </div>
-    <div key={"bl" + title} className={`${styles.blockContent}`}>
+
+    <div
+      // Stryker disable next-line StringLiteral
+      key={"bl" + title}
+      className={styles.blockContent}
+    >
       {children}
     </div>
   </div>

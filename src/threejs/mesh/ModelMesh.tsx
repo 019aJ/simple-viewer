@@ -11,6 +11,7 @@ type ModelMeshProps = {
 }
 
 export const ModelMesh = ({ color, vertices, style }: ModelMeshProps) => {
+  // Stryker disable next-line ArrayDeclaration
   const points = useMemo(() => new Float32Array(vertices), [])
   const update = useCallback(
     (

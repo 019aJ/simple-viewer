@@ -50,7 +50,7 @@ export const SingleSideMesh = () => {
     <ModelMesh
       color="red"
       vertices={getRandomCube()}
-      style= { ViewStyle.SINGLE }
+      style={ViewStyle.SINGLE}
     ></ModelMesh>
   )
 }

@@ -10,6 +10,72 @@ export const randomColor = () => {
   }
   return color
 }
+export const get1Cube = () => {
+  const x = 0
+  const y = 0
+  const z = 0
+  const heightX = 1
+  const heightY = 1
+  const heightZ = 1
+
+  const pointX = [
+    x,
+    x + heightX,
+    x + heightX,
+    x,
+    x,
+    x + heightX,
+    x + heightX,
+    x,
+  ]
+  const pointY = [
+    y,
+    y,
+    y + heightY,
+    y + heightY,
+    y,
+    y,
+    y + heightY,
+    y + heightY,
+  ]
+  const pointZ = [
+    z,
+    z,
+    z,
+    z,
+    z + heightZ,
+    z + heightZ,
+    z + heightZ,
+    z + heightZ,
+  ]
+
+  const triangle = (p1: number, p2: number, p3: number) => [
+    pointX[p1 - 1],
+    pointY[p1 - 1],
+    pointZ[p1 - 1],
+    pointX[p2 - 1],
+    pointY[p2 - 1],
+    pointZ[p2 - 1],
+    pointX[p3 - 1],
+    pointY[p3 - 1],
+    pointZ[p3 - 1],
+  ]
+  const cube = []
+  cube.push(...triangle(1, 2, 3))
+  cube.push(...triangle(1, 3, 4))
+  cube.push(...triangle(1, 2, 6))
+  cube.push(...triangle(1, 6, 5))
+  cube.push(...triangle(1, 5, 8))
+  cube.push(...triangle(1, 8, 4))
+  cube.push(...triangle(7, 8, 4))
+  cube.push(...triangle(7, 4, 3))
+  cube.push(...triangle(7, 5, 8))
+  cube.push(...triangle(7, 6, 5))
+  cube.push(...triangle(7, 3, 2))
+  cube.push(...triangle(7, 2, 6))
+  return cube
+}
+
 export const getRandomCube = () => {
   const x: number = generateNum(-50, 50)
   const y: number = generateNum(-50, 50)

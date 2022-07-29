@@ -1,7 +1,7 @@
 import { Provider } from "react-redux"
 import { Model } from "../../dto/Model"
 import { fetchFinished } from "../../redux/loadModelSlice"
-import { select } from "../../redux/modelSlice"
+import { select } from "../../redux/treeSelectionSlice"
 import appStore from "../../redux/store"
 import { AttributeList } from "./AttributeList"
 

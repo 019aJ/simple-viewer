@@ -1,4 +1,4 @@
-import { Configuration as WebpackConfiguration, DefinePlugin } from "webpack"
+import { Configuration as WebpackConfiguration } from "webpack"
 import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server"
 import HtmlWebpackPlugin from "html-webpack-plugin"
 
@@ -48,7 +48,7 @@ const config: Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "public/index.html",
-    })
+    }),
   ],
   devtool: "inline-source-map",
   devServer: {

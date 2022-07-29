@@ -1,78 +1,38 @@
-import {
-  Html, OrbitControls,
-  OrthographicCamera
-} from "@react-three/drei"
-import { Canvas } from "@react-three/fiber"
-import { Fragment } from "react"
 import * as THREE from "three"
-
-import invert from "invert-color"
-import { useSelector } from "react-redux"
-import { Model } from "../../dto/Model"
-import { CheckboxSliceState } from "../../redux/checkboxSlice"
-import { AppStateType, checkboxState } from "../../redux/store"
-import { ModelMesh } from "../mesh/ModelMesh"
+import { OrbitControls, OrthographicCamera } from "@react-three/drei"
+import { Canvas } from "@react-three/fiber"
+import configureStore, {
+  AppStateType,
+  visualBlockDataState,
+} from "../../redux/store"
+import { Provider, useSelector } from "react-redux"
 import { getCoordinates } from "../Perspective"
-import { Sections } from "../section/Sections"
+import { ViewerGroup } from "../viewergroup/ViewerGroup"
+import { VisualBlockState } from "../../redux/visualBlockSlice"
+import { useMemo } from "react"
+const store = configureStore
 
-type ViewerProps = {
-  materialStyle: string
-  cameraPos: string
-  titleVisible?: boolean
-}
-const DEFAULT_COLOR = "black"
-const getMeshes = (
-  models: Model[],
-  checks: number[],
-  materialStyle: string,
-  titleVisible: boolean
-) => {
-  if (models.length) {
-    return models
-      .filter((x, index) => checks[index])
-      .filter((x) => x.triangulation)
-      .map((x) => (
-        <Fragment key={"view" + x.id}>
-          <ModelMesh
-            color={x.color ? x.color : DEFAULT_COLOR}
-            vertices={x.triangulation}
-            style={materialStyle}
-          />
-          {titleVisible ? (
-            <Html center position={x.center}>
-              <div style={{ color: x.color ? invert(x.color) : "white" }}>
-                {x.name}
-              </div>
-            </Html>
-          ) : (
-            <></>
-          )}
-        </Fragment>
-      ))
-  }
-  return []
-}
-
-
-export const Viewer = ({
-  materialStyle,
-  cameraPos,
-  titleVisible,
-}: ViewerProps) => {
-  const checksState = useSelector<AppStateType, CheckboxSliceState>(
-    checkboxState
+type ViewerProps = {}
+export const Viewer = ({}: ViewerProps) => {
+  const viewState = useSelector<AppStateType, VisualBlockState>(
+    visualBlockDataState
   )
-  const meshes = getMeshes(
-    checksState.tree,
-    checksState.value,
-    materialStyle,
-    titleVisible ? true : false
-  )
- /* const plane = new THREE.Plane()
-  plane.constant = 1
-  plane.normal = new THREE.Vector3(0, 1, 0)
-  meshes.push(<Sections models={checksState.tree} plane={plane}></Sections>)*/
+  const sectionPlane = useMemo(() => {
+    if (
+      !viewState.plane ||
+      !viewState.plane.normal ||
+      !viewState.plane.vectorLength ||
+      !viewState.plane.sectionsVisible
+    ) {
+      return null
+    }
+    const plane = new THREE.Plane()
+    plane.constant = viewState.plane.vectorLength
 
+    plane.normal = new THREE.Vector3(...viewState.plane.normal)
+
+    return plane
+  }, [viewState.plane])
   return (
     <Canvas
       style={{
@@ -90,9 +50,15 @@ export const Viewer = ({
         near={0.1}
         far={10000}
         zoom={6}
-        position={getCoordinates(cameraPos)}
+        position={getCoordinates(viewState.camPosition)}
       />
-      <group position={[0, 0, 0]}>{meshes}</group>
+      <Provider store={store}>
+        <ViewerGroup
+          materialStyle={viewState.meshStyle}
+          sectionPlane={sectionPlane}
+          titleVisible={viewState.titleVisible}
+        />
+      </Provider>
       <hemisphereLight />
       <OrbitControls />
       <gridHelper args={[150, 15, "black", "black"]} />

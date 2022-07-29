@@ -16,7 +16,7 @@
   height: 280px;
 }
 
-.playPropButton {
+.blockButton {
   border-radius: 3px;
   width: 30px;
   height: 20px;
@@ -26,7 +26,7 @@
   cursor: pointer;
 }
 
-.playPropButton:active {
+.blockButton:active {
   background-color: #4d90fe;
   background-image: linear-gradient(#4d90fe 0px, #357ae8 100%);
 }

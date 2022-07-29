@@ -18,9 +18,13 @@ export const TreeLeaf: React.FC<TreeLeafProps> = ({
   onRowClick,
 }) => {
   return (
-    <li id={id} key={id}>
+    <li id={id} key={id} data-testid="treeLeaf">
       <Checkbox onClick={onCheckboxClick} initialState={isChecked} />
-      <label onClick={onRowClick} className={styles.leaf}>
+      <label
+        data-testid="treeLeafLabel"
+        onClick={onRowClick}
+        className={styles.leaf}
+      >
         {name}
       </label>
     </li>

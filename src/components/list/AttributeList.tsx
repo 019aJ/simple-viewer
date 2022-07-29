@@ -5,10 +5,10 @@ import {
   ModelAttributesSliceState,
 } from "../../redux/loadAttributesSlice"
 
-import { ModelSliceState } from "../../redux/modelSlice"
+import { TreeSelectionSliceState } from "../../redux/treeSelectionSlice"
 import {
   AppStateType,
-  modelSelectionState,
+  treeSelectionState,
   attributeFakeDataState,
 } from "../../redux/store"
 
@@ -16,8 +16,8 @@ import styles from "./AttributeList.module.css"
 
 export const AttributeList = ({}) => {
   const dispatch = useDispatch()
-  const selectionState = useSelector<AppStateType, ModelSliceState>(
-    modelSelectionState
+  const selectionState = useSelector<AppStateType, TreeSelectionSliceState>(
+    treeSelectionState
   )
   const modelAttributeState = useSelector<
     AppStateType,
@@ -40,7 +40,7 @@ export const AttributeList = ({}) => {
       </thead>
       <tbody>
         {modelAttributeState.value.map((x) => (
-          <tr key={x.id} className={styles.td}>
+          <tr key={x.id} className={styles.td} data-testid={x.id}>
             <td className={styles.td}>{x.name}</td>
             <td>{x.value}</td>
           </tr>

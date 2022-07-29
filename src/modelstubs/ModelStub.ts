@@ -607,3 +607,38 @@ export const modelAttributes: ModelAttribute[][] = [
     },
   ],
 ]
+
+export const stubModelList: Model[] = [
+  {
+    id: 1,
+    name: "забор",
+    path: "Солодовничье/РО/комплекс/Обследование",
+    triangulation: [0, 0, 0, 0, 0, 1, 0, 1, 1],
+    color: "red",
+  },
+  {
+    id: 2,
+    name: "Порода",
+    path: "Кукушкино/КТ/проба",
+    triangulation: [0, 0, 0, 0, 0, 1, 0, 1, 1],
+    color: "red",
+  },
+  {
+    id: 3,
+    name: "Шахта-14",
+    path: "Кукушкино/разработка",
+    triangulation: [0, 0, 0, 0, 0, 1, 0, 1, 1],
+    color: "red",
+  },
+]
+
+export const stubModelAttributes: ModelAttribute[][] = [
+  [
+    {
+      id: 1,
+      name: "Цвет",
+      value: "red",
+      identifier: "color",
+    },
+  ],
+]

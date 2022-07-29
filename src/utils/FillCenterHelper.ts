@@ -1,11 +1,11 @@
 import { Model } from "../dto/Model"
 
 export const setCenters = (models: Model[]) => {
-    models.forEach(model => { 
-        if (model.triangulation) { 
-            model.center = getCenter(model.triangulation)
-        }
-    })
+  models.forEach((model) => {
+    if (model.triangulation && model.triangulation.length > 0) {
+      model.center = getCenter(model.triangulation)
+    }
+  })
 }
 
 const getCenter = (triangulation: number[]) => {

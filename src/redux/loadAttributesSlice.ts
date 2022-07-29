@@ -46,9 +46,9 @@ export const attributeLoadSlice = createSlice({
   },
 })
 export const {
-  fetchAttributeData: fetchAttributeData,
-  fetchAttributeDataFinished: fetchAttributeDataFinished,
-  fetchAttributeDataFailed: fetchAttributeDataFailed,
+  fetchAttributeData,
+  fetchAttributeDataFinished,
+  fetchAttributeDataFailed,
 } = attributeLoadSlice.actions
 
 export default attributeLoadSlice.reducer

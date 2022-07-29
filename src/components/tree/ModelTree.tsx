@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { AnyAction, Dispatch } from "redux"
 import { Model } from "../../dto/Model"
 import { CheckboxSliceState, init, update } from "../../redux/checkboxSlice"
-import { select } from "../../redux/modelSlice"
+import { select } from "../../redux/treeSelectionSlice"
 import { AppStateType, checkboxState, treeNodesState } from "../../redux/store"
 import { TreeSliceState } from "../../redux/treeSlice"
 import { getCurrentPath, isLeaf } from "../../utils/TreePathHelper"
@@ -47,6 +47,7 @@ const getLeafComp = (
         getModelClickHandler(model.id, dispatch)
       }}
       isChecked={isChecked}
+      // Stryker disable next-line StringLiteral
       key={"tl" + model.id}
     />
   )
@@ -62,6 +63,7 @@ const getParentComp = (
 ) => {
   return (
     <TreeParent
+      // Stryker disable next-line StringLiteral
       key={"tp" + model.id}
       id={model.id.toString()}
       name={model.name}
@@ -97,10 +99,11 @@ const buildTreeRecursive = (
     }
   } else {
     let nextNodeIndex = index + 1
+    // Stryker disable next-line ArrayDeclaration
     const children = []
     while (
       nextNodeIndex < models.length &&
-      models[nextNodeIndex].path.startsWith(currentPath)
+      models[nextNodeIndex].path === currentPath
     ) {
       const { comp, currentIndex } = buildTreeRecursive(
         models,
@@ -133,6 +136,7 @@ const buildTree = (
   dispatch: Dispatch<AnyAction>
 ) => {
   let index = 0
+  // Stryker disable next-line ArrayDeclaration
   const rootNodes: JSX.Element[] = []
   while (models && index < models.length) {
     const { comp, currentIndex } = buildTreeRecursive(
@@ -164,7 +168,7 @@ export const ModelTree: React.FC<ModelTreeProps> = ({ models }) => {
   }, [checksState])
 
   return (
-    <ul id="modelTree" className={styles.ul}>
+    <ul data-testid="modelTree" className={styles.ul}>
       {checksState.tree.length ? (
         buildTree(models, checksState, nodesState, dispatch)
       ) : (

@@ -1,5 +1,5 @@
-import { Model } from "../../dto/Model"
 import * as THREE from "three"
+import { Model } from "../../dto/Model"
 import { createSection } from "../SectionHelper"
 import { Section } from "./Section"
 
@@ -16,6 +16,7 @@ export const Sections = ({ models, plane }: SectionsProps) => {
   return (
     <group>
       {sections.map((section, index) => (
+        // Stryker disable next-line StringLiteral
         <Section key={"section" + index} section={section} />
       ))}
     </group>

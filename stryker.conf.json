@@ -8,10 +8,16 @@
   "logLevel": "error",
   "timeoutMS": 100,
   "mutate": [
-    "src/**/TreeTransform.ts?(x)",
+    "src/saga/*.ts?(x)",
+    "src/components/**/*.ts?(x)",
+    "src/redux/*.ts?(x)",
+    "src/utils/*.ts?(x)",
+    "src/threejs/**/*.ts?(x)",
     "!src/**/*@(.test|.spec|Spec|.stories).ts?(x)",
     "!src/declaration.d.ts",
     "!src/**/index.ts?(x)",
-    "!src/**/ProviderWrapper.tsx"
+    "!src/api/**.ts?(x)",
+    "!src/dto/**.ts?(x)",
+    "!src/modelstubs/**.ts?(x)"
   ]
 }

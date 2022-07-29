@@ -27,7 +27,7 @@ export const onLoadFailure = (state: ModelLoadSliceState) => {
   state.isSuccess = false
 }
 
-export const modelLoadSlice = createSlice({
+export const loadModelSlice = createSlice({
   name: "modelLoad",
   initialState: {
     value: [],
@@ -40,6 +40,6 @@ export const modelLoadSlice = createSlice({
     fetchFailure: onLoadFailure,
   },
 })
-export const { fetchData, fetchFinished, fetchFailure } = modelLoadSlice.actions
+export const { fetchData, fetchFinished, fetchFailure } = loadModelSlice.actions
 
-export default modelLoadSlice.reducer
+export default loadModelSlice.reducer

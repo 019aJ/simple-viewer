@@ -13,7 +13,7 @@ export const ButtonPanel: React.FC<ButtonPanelProps> = ({
   style,
 }) => {
   return (
-    <div className={styles.buttonPanel} style={style}>
+    <div className={styles.buttonPanel} style={style} data-testid={"btnPanel"}>
       {title ? <div className={styles.panelTitle}>{title}</div> : <></>}
       {children}
     </div>

@@ -14,13 +14,6 @@ const tree: Model[] = [
   { id: 222, name: "Дочерний2", path: "Корень" },
   { id: 2, name: "Лист2", path: "Корень/Дочерний2" },
 ]
-const tree2: Model[] = [
-  { id: 111, name: "Корень", path: "" },
-  { id: 11, name: "Дочерний", path: "Корень" },
-  { id: 1, name: "Лист", path: "Корень/Дочерний" },
-  { id: 222, name: "Корень2", path: "" },
-  { id: 2, name: "Лист2", path: "Корень2" },
-]
 describe("isLeaf tests", () => {
   it("is leaf", () => {
     const result = isLeaf(tree, 2, tree[2].path)

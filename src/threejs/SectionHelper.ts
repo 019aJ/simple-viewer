@@ -25,8 +25,8 @@ const planeIntersection = (geometry: number[], plane: THREE.Plane) => {
   let idx = 0
 
   const setPointOfIntersection = (function () {
-    let line = new THREE.Line3()
-    let v = new THREE.Vector3()
+    const line = new THREE.Line3()
+    const v = new THREE.Vector3()
     return function setPointOfIntersection(
       p1: number,
       p2: number,

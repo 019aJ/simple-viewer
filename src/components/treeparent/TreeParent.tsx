@@ -26,10 +26,15 @@ export const TreeParent: React.FC<TreeParentProps> = ({
       setNodeOpen(isOpen)
     }
   }, [isOpen])
+  // Stryker disable next-line ArrayDeclaration
   const currentPathArray = []
   currentPathArray.push(
-    <div key={"dv" + id}>
+    <div
+      // Stryker disable next-line StringLiteral
+      key={"dv" + id}
+    >
       <span
+        data-testid={"row" + id}
         id={id}
         className={styles.caret}
         onClick={() => {
@@ -37,6 +42,8 @@ export const TreeParent: React.FC<TreeParentProps> = ({
         }}
       />
       <Checkbox
+        // Stryker disable next-line StringLiteral
+        data-testid={"cb" + id}
         onClick={(e) => {
           onCheckboxClick(e)
         }}
@@ -46,9 +53,18 @@ export const TreeParent: React.FC<TreeParentProps> = ({
     </div>
   )
   currentPathArray.push(
-    <ul key={"ul" + id} className={nodeOpen ? styles.active : styles.nested}>
+    <ul
+      // Stryker disable next-line StringLiteral
+      key={"ul" + id}
+      data-testid={"treeParentCont" + id}
+      className={nodeOpen ? styles.active : styles.nested}
+    >
       {children}
     </ul>
   )
-  return <li className={styles.treeNode}>{currentPathArray}</li>
+  return (
+    <li data-testid={"treeParent" + id} className={styles.treeNode}>
+      {currentPathArray}
+    </li>
+  )
 }

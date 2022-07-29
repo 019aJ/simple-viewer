@@ -7,8 +7,8 @@ type SectionProps = {
 export const Section = ({ section }: SectionProps) => {
   return (
     <Fragment>
-      {section.map((line) => (
-        <Line points={line} color="red" />
+      {section.map((line, index) => (
+        <Line key={index} points={line} color="darkgreen" />
       ))}
     </Fragment>
   )

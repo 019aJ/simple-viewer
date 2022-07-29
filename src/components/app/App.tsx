@@ -9,9 +9,13 @@ type AppProps = {}
 
 export const App = ({}: AppProps) => {
   const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(fetchData())
-  }, [])
+  useEffect(
+    () => {
+      dispatch(fetchData())
+    },
+    // Stryker disable next-line ArrayDeclaration
+    []
+  )
   return (
     <div className={styles.app}>
       <ModelBlock />

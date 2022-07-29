@@ -80,7 +80,6 @@ describe("propagation halfcheck tests", () => {
     const index = 4
     const state = 1
     const result = propagate(tree2, checks, index, state)
-    console.log(result)
 
     expect(result).toStrictEqual([1, 1, 1, 1, 1])
   })
