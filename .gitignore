@@ -5,7 +5,7 @@ dist
 .pnp.js
 storybook-static
 # testing
-coverage
+
 
 # production
 build
