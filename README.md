@@ -14,8 +14,9 @@ To construct section choose normal and constant and press section button (only p
 OrthographicCamera is used here
 
 
-
-![](https://github.com/019aJ/simple-viewer/blob/dev/demo.gif)  
+<img src="https://github.com/019aJ/simple-viewer/blob/dev/demo.gif" width="400"/>
  
-![](https://github.com/019aJ/simple-viewer/blob/dev/demo2.gif)  
+ 
+<img src="https://github.com/019aJ/simple-viewer/blob/dev/demo2.gif" width="400"/>  
 
+icons from https://icons8.com/
