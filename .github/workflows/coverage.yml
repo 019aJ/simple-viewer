@@ -22,10 +22,8 @@ jobs:
         SUMMARY="$(npm run coverage -- --coverageReporters='text-summary' | tail -2 | head -1)"
         IFS=$'\n'; TOKENS=($SUMMARY); unset IFS;
         echo TOKENS: $TOKENS
-        LINE_TOKENS=($TOKENS[2])
+        LINE_TOKENS=($TOKENS[0])
         echo LINE_TOKENS: $LINE_TOKENS
-        #TOKENS=($SUMMARY)
-        # process.env.COVERAGE = '31.93%';
         echo "COVERAGE=$(echo ${LINE_TOKENS[2]})" >> $GITHUB_ENV
 
         # var REF = 'refs/pull/27/merge.json';
