@@ -20,7 +20,8 @@ jobs:
     - name: Get Coverage for badge
       run: |
         SUMMARY="$(npm run coverage -- --coverageReporters='text-summary' | tail -2 | head -1)"
-        TOKENS=($SUMMARY)
+        IFS=$'\n'; TOKENS=($SUMMARY); unset IFS;
+        #TOKENS=($SUMMARY)
         # process.env.COVERAGE = '31.93%';
         echo "COVERAGE=$(echo ${TOKENS[2]})" >> $GITHUB_ENV
 
