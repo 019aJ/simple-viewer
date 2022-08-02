@@ -7,6 +7,7 @@
     "start": "webpack serve --mode development --config webpack.config.ts",
     "build": "webpack --mode production --config webpack.prod.config.ts",
     "test": "jest",
+    "coverage": "jest  --coverage",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "pretty": "prettier --write \"src/**/*.ts\" \"src/**/*.tsx\"",
