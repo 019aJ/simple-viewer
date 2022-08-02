@@ -1,34 +1,22 @@
-# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
-
 name: Build Status
-
-on:
-  push:
-    branches: [ dev, main ]
-  pull_request:
-    branches: [ dev, main ]
-
+on: push
+permissions: 
+  contents: write
 jobs:
   build:
-
     runs-on: ubuntu-latest
     env:
       working-directory: ./
-
     steps:
     - name: Checkout    
       uses: actions/checkout@v2
 
-
     - name: Install Packages
       working-directory: ${{env.working-directory}}
+      run: |
+        npm ci
+        npm t
 
-    # basically npm install but only installs from package-lock
-    - run: npm ci
-    - run: npm t
-
-    # Only run the coverage once
     - name: Get Coverage for badge
       run: |
         SUMMARY="$(npm coverage -- --coverageReporters='text-summary' | tail -2 | head -1)"
@@ -48,6 +36,7 @@ jobs:
         echo $BRANCH_NAME
         # process.env.BRANCH = 'pull_27';
         echo "BRANCH=$(echo ${BRANCH_NAME})" >> $GITHUB_ENV
+
     - name: Create the Badge
       uses: schneegans/dynamic-badges-action@v1.0.0
       with:
