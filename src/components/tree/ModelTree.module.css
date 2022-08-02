@@ -1,0 +1,11 @@
+ul,
+#modelTree {
+  list-style-type: none;
+  padding-inline-start: 40px;
+  margin: 0;
+}
+
+#modelTree {
+  margin: 0;
+  padding: 0;
+}

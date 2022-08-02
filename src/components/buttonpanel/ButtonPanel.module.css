@@ -1,0 +1,18 @@
+.buttonPanel {
+  background: rgb(186, 186, 191);
+  background: linear-gradient(
+    180deg,
+    rgba(186, 186, 191, 0.9976365546218487) 0%,
+    rgba(220, 225, 226, 1) 58%
+  );
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: flex-end;
+  height: 22px;
+}
+.panelTitle {
+  text-align: left;
+  margin-right: auto;
+  margin-left: 5px;
+}
