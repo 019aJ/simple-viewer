@@ -1,0 +1,51 @@
+name: Build Status
+on: push
+permissions: 
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./
+    steps:
+    - name: Checkout    
+      uses: actions/checkout@v2
+
+    - name: Install Packages
+      working-directory: ${{env.working-directory}}
+      run: |
+        npm ci
+        npm t
+
+    - name: Get Coverage for badge
+      run: |
+        SUMMARY="$(npm run coverage -- --coverageReporters='text-summary' | tail -2 | head -1)"
+        IFS=$'\n'; TOKENS=($SUMMARY); unset IFS;
+        echo TOKENS: $TOKENS
+        LINE_TOKENS=($TOKENS[0])
+        echo LINE_TOKENS: $LINE_TOKENS
+        echo "COVERAGE=$(echo ${LINE_TOKENS[2]})" >> $GITHUB_ENV
+
+        # var REF = 'refs/pull/27/merge.json';
+        REF=${{ github.ref }}
+        # console.log('github.ref: ' + REF);
+        echo "github.ref: $REF"
+        # var PATHS = REF.split('/');
+        IFS='/' read -ra PATHS <<< "$REF"
+        # var BRANCH_NAME = PATHS[1] + '_' + PATHS[2];
+        BRANCH_NAME="${PATHS[1]}_${PATHS[2]}"
+        # console.log(BRANCH_NAME); // 'pull_27'
+        echo $BRANCH_NAME
+        # process.env.BRANCH = 'pull_27';
+        echo "BRANCH=$(echo ${BRANCH_NAME})" >> $GITHUB_ENV
+
+    - name: Create the Badge
+      uses: schneegans/dynamic-badges-action@v1.0.0
+      with:
+        auth: ${{ secrets.GIST_SECRET }}
+        gistID: c729697485e62b072706efe50a0146f3
+        filename: simple-viewer__${{ env.BRANCH }}.json
+        label: Test Coverage
+        message: ${{ env.COVERAGE }}
+        color: green
+        namedLogo: jest

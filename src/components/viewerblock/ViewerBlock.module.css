@@ -1,0 +1,31 @@
+.viewerBlock {
+  width: 100%;
+  height: 100%;
+}
+
+.numbox {
+  width: 40px;
+}
+
+.titleButton {
+  border-radius: 3px;
+  width: 30px;
+  height: 20px;
+  border: 1px solid rgb(192, 192, 192);
+  background-position: center center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.titleButton:active {
+  background-color: #4d90fe;
+  background-image: linear-gradient(#4d90fe 0px, #357ae8 100%);
+}
+
+.showTitle {
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABmJLR0QA/wD/AP+gvaeTAAAA4klEQVQ4jcXTvUpDQRAF4M9Y2JmAD2AR/1L6EPEVtA7EJ9E30edIEzuJrYjgD7aWauVPcacIstc7NxFy4MCye+bM7MwuK8Ig+C/o4yPYbxJ3EoYjbARHTeK1RMJHPId2O/iZKKSII3xjjNNYDxc1g0u8o4dNvOFiUbOSwXyC1ihdcb4FrTGN4Bmug7PYm9YF1U15D7d4wuuvsy3VpA9wl63uPCrZL5zt4gtnWbOO6t3VXgtXeMF6xnCoufFjLd7kCR7Q/UPTVf2g44zhUihNeQeHyfgb3DeJJqr+ZDhZSYVL4Qf4PTpdnfDhHwAAAABJRU5ErkJggg==);
+}
+
+.showSection{
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABmJLR0QA/wD/AP+gvaeTAAAAbElEQVQ4je2T0QmAMAwFT3EFncd5dAi7hM7TeewQ+tNC9EMhiSDowYP+5Hg0BN5OJd59joaYQ3MSTkphkR4atkCnlK1AAqgNjW4JwKZMKBL5h9FQxjJ7jVzKAIxKzwws8PBSXPgvxZePXIo7O3/SLf6bhAzlAAAAAElFTkSuQmCC);
+}
